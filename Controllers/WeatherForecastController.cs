@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
-namespace SmartPorteAPI.Controllers
+namespace SmartPoleAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]

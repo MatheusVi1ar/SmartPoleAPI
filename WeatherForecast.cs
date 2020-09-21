@@ -1,6 +1,6 @@
 using System;
 
-namespace SmartPorteAPI
+namespace SmartPoleAPI
 {
     public class WeatherForecast
     {
