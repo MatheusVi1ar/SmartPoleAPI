@@ -25,23 +25,45 @@ namespace SmartPoleAPI.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<SensorModel> Get()
+        public IEnumerable<SensorArray> Get()
         {
+            List<SensorArray> Lista = new List<SensorArray>();
             List<string> CollectionList = GetCollection();
             var client = new MongoClient(CONNECTION_STRING);
             var database = client.GetDatabase("sth_helixiot");
             foreach (string collectionName in CollectionList)
             {
+                SensorArray auxCollection = new SensorArray();
+                auxCollection.Collection = collectionName;
+
                 string name = string.Format("sth_/_{0}_SmartMeter",collectionName);
                 var collection = database.GetCollection<BsonDocument>(name);
-
+                
                 var data = collection.Find(new BsonDocument()).ToList();
+                
                 foreach (var document in data)
                 {
-                     var aux = BsonSerializer.Deserialize<SensorModel>(document);
+                    
+                    SensorModel aux = BsonSerializer.Deserialize<SensorModel>(document);
+
+                        Sensor objeto = new Sensor();
+                        objeto.Data = aux.recvTime;
+                        objeto.Nome = aux.attrName;
+                        objeto.Valor = aux.attrValue;
+
+                    if (aux.attrName == "energia")
+                        auxCollection.Energia.Add(objeto);
+                    else if (aux.attrName == "temperatura")
+                        auxCollection.Temperatura.Add(objeto);
+                    else if(aux.attrName == "luz")
+                        auxCollection.Luminosidade.Add(objeto);
+                    else if (aux.attrName == "vazao")
+                        auxCollection.Vazao.Add(objeto);
+
                 }
+                Lista.Add(auxCollection);
             }
-            return null;
+            return Lista;
         }
 
         public List<string> GetCollection()
@@ -59,7 +81,7 @@ namespace SmartPoleAPI.Controllers
                 var _id = (JObject)JsonConvert.DeserializeObject(data["_id"].ToString());
                 string id = _id["id"].Value<string>();
                 lista.Add(id);
-            }
+            }            
             return lista;
         }
     }

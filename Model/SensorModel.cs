@@ -12,6 +12,6 @@ namespace SmartPoleAPI.Model
             public DateTime recvTime { get; set; }
             public string attrName { get; set; }
             public string attrType { get; set; }
-            public DateTime attrValue { get; set; }
+            public string attrValue { get; set; }
     }
 }
