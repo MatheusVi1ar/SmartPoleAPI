@@ -25,7 +25,7 @@ namespace SmartPoleAPI.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<SensorArray> Get()
+        public string Get()
         {
             List<SensorArray> Lista = new List<SensorArray>();
             List<string> CollectionList = GetCollection();
@@ -63,7 +63,10 @@ namespace SmartPoleAPI.Controllers
                 }
                 Lista.Add(auxCollection);
             }
-            return Lista;
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            string output = jss.Serialize(Lista);
+
+            return output;
         }
 
         public List<string> GetCollection()
