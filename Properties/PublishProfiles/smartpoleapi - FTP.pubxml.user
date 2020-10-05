@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Esse arquivo é usado pelo processo de publicação/pacote do seu projeto Web. É possível personalizar o comportamento deste processo
+ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAom6O92Eal0CHC6RNTcvTxgAAAAACAAAAAAAQZgAAAAEAACAAAABZZo96CTIjluCC1oofG+xOzAat8Wc16AOzOvfuCtlm0QAAAAAOgAAAAAIAACAAAABWwn+38F8qC03+b4klQVOTESlMcV1ct3et+QHjGJmBdYAAAABU3nsgBZ47Vo8dtyllNaBs/mukNd1p8uJfga4wFUG/W1q1mvGCaj9nq8iJDb9AEsHenhLO14Tdll5anLMPaA30a9vOJMInRZBhOusoCR2bVsoNIHVvJ3kDcrWGsOMNHTgYzfDMChc93jpEJK2CBmnFA286udQfT3X8iG1AVYBuN0AAAABO3JftImxR0pOxvNtQZB0zfER09A5gT1mrmTRUkCYySKqx+F6l0u2EWv8qQ6LzLcaODcrmDq3CTt9nXAUCvg3V</EncryptedPassword>
+    <_PublishTargetUrl>ftp://waws-prod-cq1-017.ftp.azurewebsites.windows.net/site/wwwroot</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="appsettings.Development.json">
+      <publishTime>09/20/2020 20:58:16</publishTime>
+    </File>
+    <File Include="appsettings.json">
+      <publishTime>09/20/2020 20:58:16</publishTime>
+    </File>
+    <File Include="DnsClient.dll">
+      <publishTime>03/31/2020 21:28:56</publishTime>
+    </File>
+    <File Include="Microsoft.DotNet.PlatformAbstractions.dll">
+      <publishTime>11/22/2017 10:48:10</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.DependencyModel.dll">
+      <publishTime>11/22/2017 10:48:14</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.PlatformAbstractions.dll">
+      <publishTime>09/15/2019 12:28:53</publishTime>
+    </File>
+    <File Include="MongoDB.Bson.dll">
+      <publishTime>09/10/2020 21:10:52</publishTime>
+    </File>
+    <File Include="MongoDB.Driver.Core.dll">
+      <publishTime>09/10/2020 21:11:00</publishTime>
+    </File>
+    <File Include="MongoDB.Driver.dll">
+      <publishTime>09/10/2020 21:11:06</publishTime>
+    </File>
+    <File Include="MongoDB.Libmongocrypt.dll">
+      <publishTime>11/13/2019 20:35:30</publishTime>
+    </File>
+    <File Include="Nancy.dll">
+      <publishTime>04/27/2019 10:54:46</publishTime>
+    </File>
+    <File Include="Newtonsoft.Json.dll">
+      <publishTime>09/15/2019 12:28:27</publishTime>
+    </File>
+    <File Include="runtimes/win/native/libzstd.dll">
+      <publishTime>09/10/2020 21:07:14</publishTime>
+    </File>
+    <File Include="runtimes/win/native/snappy32.dll">
+      <publishTime>09/10/2020 21:07:14</publishTime>
+    </File>
+    <File Include="runtimes/win/native/snappy64.dll">
+      <publishTime>09/10/2020 21:07:14</publishTime>
+    </File>
+    <File Include="SharpCompress.dll">
+      <publishTime>02/27/2019 12:59:52</publishTime>
+    </File>
+    <File Include="SmartPoleAPI.deps.json">
+      <publishTime>09/24/2020 23:15:18</publishTime>
+    </File>
+    <File Include="SmartPoleAPI.dll">
+      <publishTime>09/24/2020 23:15:16</publishTime>
+    </File>
+    <File Include="SmartPoleAPI.exe">
+      <publishTime>09/24/2020 23:15:17</publishTime>
+    </File>
+    <File Include="SmartPoleAPI.pdb">
+      <publishTime>09/24/2020 23:15:16</publishTime>
+    </File>
+    <File Include="SmartPoleAPI.runtimeconfig.json">
+      <publishTime>09/24/2020 23:15:18</publishTime>
+    </File>
+    <File Include="web.config">
+      <publishTime>09/24/2020 23:15:25</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
