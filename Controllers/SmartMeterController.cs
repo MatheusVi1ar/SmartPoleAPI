@@ -16,7 +16,7 @@ namespace SmartPoleAPI.Controllers
     [Route("[controller]")]
     public class SmartMeterController : ControllerBase
     {
-        private const string CONNECTION_STRING = "mongodb://helix:H3l1xNG@143.107.145.32:27000/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false";
+        
         private readonly ILogger<SmartMeterController> _logger;
 
         public SmartMeterController(ILogger<SmartMeterController> logger)
@@ -29,7 +29,7 @@ namespace SmartPoleAPI.Controllers
         {
             List<SensorArray> Lista = new List<SensorArray>();
             List<string> CollectionList = GetCollection();
-            var client = new MongoClient(CONNECTION_STRING);
+            var client = new MongoClient(ConnectionString.conexao);
             var database = client.GetDatabase("sth_helixiot");
             foreach (string collectionName in CollectionList)
             {
@@ -71,7 +71,7 @@ namespace SmartPoleAPI.Controllers
 
         public List<string> GetCollection()
         {
-            var client = new MongoClient(CONNECTION_STRING);
+            var client = new MongoClient(ConnectionString.conexao);
             var database = client.GetDatabase("orion-helixiot");
             var collection = database.GetCollection<BsonDocument>("entities");
 
