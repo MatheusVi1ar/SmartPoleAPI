@@ -28,7 +28,7 @@ namespace SmartPoleAPI.Controllers
         public string Get()
         {
             List<SensorArray> Lista = new List<SensorArray>();
-            List<string> CollectionList = GetCollection();
+            List<string> CollectionList = GetDispositivos();
             var client = new MongoClient(ConnectionString.conexao);
             var database = client.GetDatabase("sth_helixiot");
             foreach (string collectionName in CollectionList)
@@ -69,7 +69,8 @@ namespace SmartPoleAPI.Controllers
             return output;
         }
 
-        public List<string> GetCollection()
+        [HttpGet("GetDispositivos")]
+        public List<string> GetDispositivos()
         {
             var client = new MongoClient(ConnectionString.conexao);
             var database = client.GetDatabase("orion-helixiot");
