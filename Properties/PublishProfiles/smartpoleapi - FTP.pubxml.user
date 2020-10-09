@@ -59,22 +59,22 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>02/27/2019 12:59:52</publishTime>
     </File>
     <File Include="SmartPoleAPI.deps.json">
-      <publishTime>09/24/2020 23:15:18</publishTime>
+      <publishTime>10/06/2020 20:44:02</publishTime>
     </File>
     <File Include="SmartPoleAPI.dll">
-      <publishTime>09/24/2020 23:15:16</publishTime>
+      <publishTime>10/06/2020 20:43:56</publishTime>
     </File>
     <File Include="SmartPoleAPI.exe">
-      <publishTime>09/24/2020 23:15:17</publishTime>
+      <publishTime>10/06/2020 20:43:56</publishTime>
     </File>
     <File Include="SmartPoleAPI.pdb">
-      <publishTime>09/24/2020 23:15:16</publishTime>
+      <publishTime>10/06/2020 20:43:56</publishTime>
     </File>
     <File Include="SmartPoleAPI.runtimeconfig.json">
       <publishTime>09/24/2020 23:15:18</publishTime>
     </File>
     <File Include="web.config">
-      <publishTime>09/24/2020 23:15:25</publishTime>
+      <publishTime>10/06/2020 20:44:03</publishTime>
     </File>
   </ItemGroup>
 </Project>

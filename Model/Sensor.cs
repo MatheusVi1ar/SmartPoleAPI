@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace SmartPoleAPI.Model
 {
-    public class SensorArray
+    public class Entidade
     {
         public List<Sensor> Vazao{ get; set; }
         public List<Sensor> Luminosidade { get; set; }
@@ -13,7 +13,7 @@ namespace SmartPoleAPI.Model
         public List<Sensor> Temperatura { get; set; }
 
         public string Collection { get; set; }
-        public SensorArray()
+        public Entidade()
         {
             Vazao = new List<Sensor>();
             Luminosidade = new List<Sensor>();
