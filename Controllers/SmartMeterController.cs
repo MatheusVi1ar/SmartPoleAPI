@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -25,8 +26,8 @@ namespace SmartPoleAPI.Controllers
             _logger = logger;
         }
 
-        [HttpPost("GetHistorico")]
-        public string GetHistorico([FromBody]string dispositivo, DateTime dataDe, DateTime dataAte)
+        [HttpGet("GetHistorico")]
+        public Entidade GetHistorico(string dispositivo, string dataDe, string dataAte)
         {
             var client = new MongoClient(ConnectionString.conexao);
             var database = client.GetDatabase("sth_helixiot");
@@ -35,11 +36,15 @@ namespace SmartPoleAPI.Controllers
             string conexao = string.Format("sth_/_{0}_SmartMeter", dispositivo);
             var colecao = database.GetCollection<BsonDocument>(conexao);
 
-            var builder = Builders<BsonDocument>.Filter;
-            var filtro = builder.Lte("recvTime", dataAte) & builder.Gte("recvTime", "dataDe");
+            //var builder = Builders<BsonDocument>.Filter;
+            //ISODate("2020-09-21T23:28:54.965Z")
+            //string dataAteISO = dataAte.ToString("yyyy-MM-dd'T'HH:mm:ss.fffZ", CultureInfo.InvariantCulture);
+            //string dataDeISO = dataDe.ToString("yyyy-MM-dd'T'HH:mm:ss.fffZ", CultureInfo.InvariantCulture);
 
-            var data = colecao.Find(filtro).ToList();
-
+            // var filtro = builder.Gte("_id.recvTime", dataDeISO); //builder.Lte("recvTime" , dataAteISO) &
+            var data = colecao.Find(new BsonDocument()).ToList();
+            //var data = colecao.Find(filtro).ToList();
+            int i = 0;
             foreach (var document in data)
             {
 
@@ -50,21 +55,40 @@ namespace SmartPoleAPI.Controllers
                 objeto.Nome = aux.attrName;
                 objeto.Valor = aux.attrValue;
 
-                if (aux.attrName == "energia")
-                    auxCollection.Energia.Add(objeto);
-                else if (aux.attrName == "temperatura")
-                    auxCollection.Temperatura.Add(objeto);
-                else if (aux.attrName == "luz")
-                    auxCollection.Luminosidade.Add(objeto);
-                else if (aux.attrName == "vazao")
-                    auxCollection.Vazao.Add(objeto);
-
+                if (objeto.Data.Date >= Convert.ToDateTime(dataDe) && objeto.Data.Date <= Convert.ToDateTime(dataAte))
+                {
+                    if (aux.attrName == "energia")
+                    {
+                        if (auxCollection.DadosRecentes.Energia == null || objeto.Data > auxCollection.DadosRecentes.Energia.Data)
+                            auxCollection.DadosRecentes.Energia = objeto;
+                        auxCollection.Energia.Add(objeto);
+                    }
+                    else if (aux.attrName == "temperatura")
+                    {
+                        if (auxCollection.DadosRecentes.Temperatura == null || objeto.Data > auxCollection.DadosRecentes.Temperatura.Data)
+                            auxCollection.DadosRecentes.Temperatura = objeto;
+                        auxCollection.Temperatura.Add(objeto);
+                    }
+                    else if (aux.attrName == "luz")
+                    {
+                        if (auxCollection.DadosRecentes.Luminosidade == null || objeto.Data > auxCollection.DadosRecentes.Luminosidade.Data)
+                            auxCollection.DadosRecentes.Luminosidade = objeto;
+                        auxCollection.Luminosidade.Add(objeto);
+                    }
+                    else if (aux.attrName == "vazao")
+                    {
+                        if (auxCollection.DadosRecentes.Vazao == null || objeto.Data > auxCollection.DadosRecentes.Vazao.Data)
+                            auxCollection.DadosRecentes.Vazao = objeto;
+                        auxCollection.Vazao.Add(objeto);
+                    }
+                }
+                else
+                {
+                    i++;
+                }
             }
 
-            JavaScriptSerializer jss = new JavaScriptSerializer();
-            string output = jss.Serialize(auxCollection);
-
-            return output;
+            return auxCollection;
         }
 
         [HttpGet]
@@ -83,8 +107,8 @@ namespace SmartPoleAPI.Controllers
             {
                 var data = (JObject)JsonConvert.DeserializeObject(doc.AsBsonDocument.ToString());
                 var _id = (JObject)JsonConvert.DeserializeObject(data["_id"].ToString());
-                    string id = _id["id"].Value<string>();
-                    lista.Add(id);
+                string id = _id["id"].Value<string>();
+                lista.Add(id);
             }
             return lista;
         }

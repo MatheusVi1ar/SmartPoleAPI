@@ -16,7 +16,6 @@ C:\Users\Asus\source\repos\SmartPoleAPI\bin\Debug\netcoreapp3.1\SharpCompress.dl
 C:\Users\Asus\source\repos\SmartPoleAPI\bin\Debug\netcoreapp3.1\runtimes\win\native\libzstd.dll
 C:\Users\Asus\source\repos\SmartPoleAPI\bin\Debug\netcoreapp3.1\runtimes\win\native\snappy32.dll
 C:\Users\Asus\source\repos\SmartPoleAPI\bin\Debug\netcoreapp3.1\runtimes\win\native\snappy64.dll
-C:\Users\Asus\source\repos\SmartPoleAPI\obj\Debug\netcoreapp3.1\SmartPoleAPI.csprojAssemblyReference.cache
 C:\Users\Asus\source\repos\SmartPoleAPI\obj\Debug\netcoreapp3.1\SmartPoleAPI.AssemblyInfoInputs.cache
 C:\Users\Asus\source\repos\SmartPoleAPI\obj\Debug\netcoreapp3.1\SmartPoleAPI.AssemblyInfo.cs
 C:\Users\Asus\source\repos\SmartPoleAPI\obj\Debug\netcoreapp3.1\SmartPoleAPI.RazorTargetAssemblyInfo.cache
@@ -33,3 +32,4 @@ C:\Users\Asus\source\repos\SmartPoleAPI\bin\Debug\netcoreapp3.1\Microsoft.Extens
 C:\Users\Asus\source\repos\SmartPoleAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.PlatformAbstractions.dll
 C:\Users\Asus\source\repos\SmartPoleAPI\bin\Debug\netcoreapp3.1\Nancy.dll
 C:\Users\Asus\source\repos\SmartPoleAPI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\Asus\source\repos\SmartPoleAPI\obj\Debug\netcoreapp3.1\SmartPoleAPI.csprojAssemblyReference.cache
