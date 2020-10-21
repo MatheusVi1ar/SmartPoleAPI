@@ -55,31 +55,31 @@ namespace SmartPoleAPI.Controllers
                 objeto.Nome = aux.attrName;
                 objeto.Valor = aux.attrValue;
 
-                if (objeto.Data.Date >= Convert.ToDateTime(dataDe) && objeto.Data.Date <= Convert.ToDateTime(dataAte))
+                if (objeto.Data.Date >= DateTime.ParseExact(dataDe, "dd/MM/yyyy", null) && objeto.Data.Date <= DateTime.ParseExact(dataAte, "dd/MM/yyyy", null))
                 {
-                    if (aux.attrName == "energia")
+                    if (aux.attrName.ToUpper() == "ENERGIA")
                     {
-                        if (auxCollection.DadosRecentes.Energia == null || objeto.Data > auxCollection.DadosRecentes.Energia.Data)
-                            auxCollection.DadosRecentes.Energia = objeto;
                         auxCollection.Energia.Add(objeto);
                     }
-                    else if (aux.attrName == "temperatura")
+                    else if (aux.attrName.ToUpper() == "TEMPERATURA")
                     {
-                        if (auxCollection.DadosRecentes.Temperatura == null || objeto.Data > auxCollection.DadosRecentes.Temperatura.Data)
-                            auxCollection.DadosRecentes.Temperatura = objeto;
                         auxCollection.Temperatura.Add(objeto);
                     }
-                    else if (aux.attrName == "luz")
+                    else if (aux.attrName == "LUZ" || aux.attrName.ToUpper() == "LUMINOSIDADE")
                     {
-                        if (auxCollection.DadosRecentes.Luminosidade == null || objeto.Data > auxCollection.DadosRecentes.Luminosidade.Data)
-                            auxCollection.DadosRecentes.Luminosidade = objeto;
                         auxCollection.Luminosidade.Add(objeto);
                     }
-                    else if (aux.attrName == "vazao")
+                    else if (aux.attrName.ToUpper() == "VAZAO")
                     {
-                        if (auxCollection.DadosRecentes.Vazao == null || objeto.Data > auxCollection.DadosRecentes.Vazao.Data)
-                            auxCollection.DadosRecentes.Vazao = objeto;
                         auxCollection.Vazao.Add(objeto);
+                    }
+                    else if (aux.attrName.ToUpper() == "GAS")
+                    {
+                        auxCollection.Gas.Add(objeto);
+                    }
+                    else if (aux.attrName.ToUpper() == "UMIDADE")
+                    {
+                        auxCollection.Umidade.Add(objeto);
                     }
                 }
                 else
