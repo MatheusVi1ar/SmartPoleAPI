@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MongoDB.Bson;
@@ -111,6 +114,41 @@ namespace SmartPoleAPI.Controllers
                 lista.Add(id);
             }
             return lista;
+        }
+
+        [HttpPost("PostLogin")]
+        public async Task<HttpStatusCode> PostLogin([FromBody] UsuarioModel Usuario)
+        {
+            string URL_HELIX = "http://143.107.145.32";
+            string GET_ENTITIES = ":1026/v2/entities/";
+
+            using (HttpClient cliente = new HttpClient())
+            {
+                cliente.DefaultRequestHeaders.Add("Accept", "application/json");
+                cliente.DefaultRequestHeaders.Add("fiware-service", "helixiot");
+                cliente.DefaultRequestHeaders.Add("fiware-servicepath", "/");
+
+                try
+                {
+                    HttpResponseMessage resposta = await cliente.GetAsync(URL_HELIX + GET_ENTITIES + Usuario.Login);
+                    if (resposta.IsSuccessStatusCode)
+                    {
+                        string conteudo = await resposta.Content.ReadAsStringAsync();
+                        UsuarioJson usuariojson = JsonConvert.DeserializeObject<UsuarioJson>(conteudo);
+
+                        if (usuariojson.senha.value == Usuario.Senha)
+                        {
+                            return HttpStatusCode.OK;
+                        }
+                        return HttpStatusCode.NotFound;
+                    }
+                }
+                catch
+                {
+                    return HttpStatusCode.NotFound;
+                }
+                return HttpStatusCode.NotFound;
+            }
         }
     }
 }
