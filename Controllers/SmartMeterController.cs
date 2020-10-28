@@ -117,10 +117,11 @@ namespace SmartPoleAPI.Controllers
         }
 
         [HttpPost("PostLogin")]
-        public async Task<HttpStatusCode> PostLogin([FromBody] UsuarioModel Usuario)
+        public async Task<bool> PostLogin([FromBody] UsuarioModel Usuario)
         {
             string URL_HELIX = "http://143.107.145.32";
             string GET_ENTITIES = ":1026/v2/entities/";
+            bool output = false;
 
             using (HttpClient cliente = new HttpClient())
             {
@@ -136,19 +137,15 @@ namespace SmartPoleAPI.Controllers
                         string conteudo = await resposta.Content.ReadAsStringAsync();
                         UsuarioJson usuariojson = JsonConvert.DeserializeObject<UsuarioJson>(conteudo);
 
-                        if (usuariojson.senha.value == Usuario.Senha)
-                        {
-                            return HttpStatusCode.OK;
-                        }
-                        return HttpStatusCode.NotFound;
+                        output = (usuariojson.senha.value == Usuario.Senha);
                     }
                 }
                 catch
                 {
-                    return HttpStatusCode.NotFound;
+                    output = false;
                 }
-                return HttpStatusCode.NotFound;
-            }
+                return output;
+            }            
         }
     }
 }
