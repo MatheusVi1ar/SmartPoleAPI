@@ -25,11 +25,14 @@ C:\Users\Asus\source\repos\SmartPoleAPI\obj\Debug\netcoreapp3.1\staticwebassets\
 C:\Users\Asus\source\repos\SmartPoleAPI\obj\Debug\netcoreapp3.1\SmartPoleAPI.dll
 C:\Users\Asus\source\repos\SmartPoleAPI\obj\Debug\netcoreapp3.1\SmartPoleAPI.pdb
 C:\Users\Asus\source\repos\SmartPoleAPI\obj\Debug\netcoreapp3.1\SmartPoleAPI.genruntimeconfig.cache
-C:\Users\Asus\source\repos\SmartPoleAPI\obj\Debug\netcoreapp3.1\SmartPoleAPI.csproj.CoreCompileInputs.cache
-C:\Users\Asus\source\repos\SmartPoleAPI\obj\Debug\netcoreapp3.1\SmartPoleAPI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Asus\source\repos\SmartPoleAPI\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
 C:\Users\Asus\source\repos\SmartPoleAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
 C:\Users\Asus\source\repos\SmartPoleAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.PlatformAbstractions.dll
 C:\Users\Asus\source\repos\SmartPoleAPI\bin\Debug\netcoreapp3.1\Nancy.dll
 C:\Users\Asus\source\repos\SmartPoleAPI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\Users\Asus\source\repos\SmartPoleAPI\obj\Debug\netcoreapp3.1\SmartPoleAPI.csprojAssemblyReference.cache
+C:\Users\Asus\source\repos\SmartPoleAPI\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+C:\Users\Asus\source\repos\SmartPoleAPI\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Asus\source\repos\SmartPoleAPI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Asus\source\repos\SmartPoleAPI\obj\Debug\netcoreapp3.1\SmartPoleAPI.csproj.CoreCompileInputs.cache
+C:\Users\Asus\source\repos\SmartPoleAPI\obj\Debug\netcoreapp3.1\SmartPoleAPI.MvcApplicationPartsAssemblyInfo.cache

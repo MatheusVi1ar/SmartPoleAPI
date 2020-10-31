@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
@@ -32,7 +34,7 @@ namespace SmartPoleAPI.Controllers
         [HttpGet("GetHistorico")]
         public Entidade GetHistorico(string dispositivo, string dataDe, string dataAte)
         {
-            var client = new MongoClient(ConnectionString.conexao);
+            var client = new MongoClient(GetConnectionString());
             var database = client.GetDatabase("sth_helixiot");
             Entidade auxCollection = new Entidade();
 
@@ -97,7 +99,7 @@ namespace SmartPoleAPI.Controllers
         [HttpGet]
         public List<string> GetDispositivos()
         {
-            var client = new MongoClient(ConnectionString.conexao);
+            var client = new MongoClient(GetConnectionString());
             var database = client.GetDatabase("orion-helixiot");
             var collection = database.GetCollection<BsonDocument>("entities");
 
@@ -146,6 +148,19 @@ namespace SmartPoleAPI.Controllers
                 }
                 return output;
             }            
+        }
+
+        public string GetConnectionString()
+        {
+            string appPath = AppDomain.CurrentDomain.BaseDirectory;
+            string jsonPath = Path.Combine(Directory.GetCurrentDirectory(), "appsettings.json");
+
+            IConfiguration configuration = new ConfigurationBuilder()
+                .SetBasePath(appPath)
+                .AddJsonFile(jsonPath, optional: false, reloadOnChange: true)
+                .Build();
+
+            return configuration.GetSection("ConnectionString:Default").Value.ToString();
         }
     }
 }
